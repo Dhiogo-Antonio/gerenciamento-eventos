@@ -10,22 +10,26 @@ private $participanteModel;
     }
 
       public function listar(){
-        $usuarios = $this->participanteModel->buscarTodos();
+        $participantes = $this->participanteModel->buscarTodos();
        include_once "C:/Turma2/xampp/htdocs/gerenciamento-eventos/view/participantes/listar.php";
        return;
     }
 
      public function buscarUsuario($id){
-        $usuario = $this->participanteModel->buscarUsuario($id);
-        return $usuario;
+        $participantes = $this->participanteModel->buscarUsuario($id);
+        return $participantes;
     }
 
-   public function cadastrar($nome, $email, $telefone){
-        return $this->participanteModel->cadastrar($nome, $email, $telefone);
+   public function cadastrar($nome, $email, $telefone, $senha){
+        return $this->participanteModel->cadastrar($nome, $email, $telefone, $senha);
     }
 
-    public function editar($nome, $email, $telefone, $id){
-        $this->participanteModel->editar($nome, $email, $telefone, $id);
+     public function login($email, $senha){
+    return $this->participanteModel->login($email, $senha);
+    }
+
+    public function editar($nome, $email, $telefone, $senha, $id){
+        $this->participanteModel->editar($nome, $email, $telefone, $senha, $id);
     }
 
     public function deletar($id){

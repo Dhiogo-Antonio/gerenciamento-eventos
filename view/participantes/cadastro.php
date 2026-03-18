@@ -14,7 +14,11 @@
 
 <input type="text" name="telefone" placeholder="Telefone">
 
+<input type="password" name="senha" placeholder="Senha" required><br><br>
+
 <button type="submit">Cadastrar</button>
+
+
 
 </form>
 
@@ -33,9 +37,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $telefone = $_POST['telefone'];
+    $senha = $_POST['senha'];
 
-     $participanteController->cadastrar($nome, $email, $telefone);
-    header('Location: ../../public/index.php');
+     $participanteController->cadastrar($nome, $email, $telefone, $senha);
+    header('Location: ../../admin/index.php');
 
 }
 

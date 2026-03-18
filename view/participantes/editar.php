@@ -2,11 +2,11 @@
 require_once "C:/Turma2/xampp/htdocs/gerenciamento-eventos/controller/ParticipanteController.php";
 require_once "C:/Turma2/xampp/htdocs/gerenciamento-eventos/db/database.php";
 
-$ParticipanteController = new ParticipanteController($pdo);
+$participanteController = new ParticipanteController($pdo);
 
 if(isset($_GET['id'])){
     $id = $_GET['id'];
-    $usuario = $ParticipanteController->buscarUsuario($id);
+    $participantes = $participanteController->buscarUsuario($id);
 
 
 
@@ -23,13 +23,16 @@ if(isset($_GET['id'])){
 <body>
     <form method="post">
     <label for="nome">Nome:</label>
-    <input type="text" name="nome" value="<?=$usuario['nome'];?>" required><br>
+    <input type="text" name="nome" value="<?=$participantes['nome'];?>" required><br>
 
     <label for="email">Email:</label>
-    <input type="text" name="email" value="<?=$usuario['email'];?>" required><br>
+    <input type="text" name="email" value="<?=$participantes['email'];?>" required><br>
+
+    <label for="telefone">Telefone:</label>
+    <input type="text" name="telefone" value="<?=$participantes['telefone'];?>" required><br>
 
     <label for="senha">Senha:</label>
-    <input type="password" name="senha" value="<?=$usuario['senha'];?>" required><br>
+    <input type="password" name="senha" value="<?=$participantes['senha'];?>" required><br>
 
     <input type="submit">
     </form>
@@ -43,11 +46,12 @@ if(isset($_GET['id'])){
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $nome = $_POST['nome'];
     $email = $_POST['email'];
+    $telefone = $_POST['telefone'];
     $senha = $_POST['senha'];
 
-    $UsuarioController->editar($nome, $email, $senha, $id);
+    $participanteController->editar($nome, $email, $telefone, $senha, $id);
 
-    header('Location: ../../index.php');
+    header('Location: ../../admin/index.php');
 
 }
 
