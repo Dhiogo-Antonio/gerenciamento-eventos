@@ -9,18 +9,17 @@ if (!isset($_SESSION['participante'])) {
 
 $participante = $_SESSION['participante'];
 
-
 $stmt = $pdo->query("SELECT * FROM eventos ORDER BY data ASC");
 $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/style.css">
 
 <div class="container">
 
-<h2>Bem-vindo, <?php echo $participante['nome']; ?></h2>
+<h2 class="title">Seja Bem-vindo, <?php echo $participante['nome']; ?></h2>
 
-<div style="margin-bottom: 15px;">
+<div class="top-actions">
     <?php if ($participante['tipo'] == 'admin'): ?>
         <a class="btn btn-success" href="../admin/index.php">Admin</a>
     <?php endif; ?>
@@ -28,14 +27,15 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <a class="btn btn-danger" href="logout.php">Sair</a>
 </div>
 
-<h3>Eventos disponíveis</h3>
+<h3 class="subtitle">Eventos disponíveis</h3>
+
+<div class="cards">
 
 <?php foreach ($eventos as $evento): 
 
 $stmtCount = $pdo->prepare("SELECT COUNT(*) as total FROM inscricoes WHERE evento_id = :id");
 $stmtCount->execute([':id' => $evento['id']]);
 $total = $stmtCount->fetch(PDO::FETCH_ASSOC)['total'];
-
 
 $stmtCheck = $pdo->prepare("SELECT * FROM inscricoes WHERE evento_id = :evento AND participante_id = :participante");
 $stmtCheck->execute([
@@ -44,41 +44,44 @@ $stmtCheck->execute([
 ]);
 
 $jaInscrito = $stmtCheck->rowCount() > 0;
-
 ?>
 
 <div class="card">
-    <h3><?php echo $evento['nome']; ?></h3>
-    <p><?php echo $evento['descricao']; ?></p>
+    <h3 class="card-title"><?php echo $evento['nome']; ?></h3>
 
-    <p>
-        📅 <?php echo $evento['data']; ?> |
-        ⏰ <?php echo $evento['horario']; ?>
+    <p class="card-desc"><?php echo $evento['descricao']; ?></p>
+
+    <p class="card-info">
+         <span style="color:red">Data: </span><?php echo $evento['data']; ?> <br><br>
+        <span style="color:red">Horário: </span><?php echo $evento['horario']; ?>
     </p>
 
-    <p>📍 <?php echo $evento['local']; ?></p>
+    <p class="card-local"> <span style="color:red">Local: </span><?php echo $evento['local']; ?></p>
 
-    <p><b>Vagas:</b> <?php echo "$total / {$evento['max_participantes']}"; ?></p>
+    <p class="card-vagas">
+        <span style="color:red">Vagas:</span> <?php echo "$total / {$evento['max_participantes']}"; ?>
+    </p>
 
     <?php if ($jaInscrito): ?>
-    <span style="color:green;">Já inscrito</span><br><br>
+        <span class="status status-ok">Já inscrito</span><br><br>
 
-    <a class="btn btn-danger" 
-       href="../usuario/cancelarInscricao.php?id=<?php echo $evento['id']; ?>"
-       onclick="return confirm('Deseja cancelar a inscrição?')">
-        Cancelar inscrição
-    </a>
+        <a class="btn btn-danger" 
+           href="../usuario/cancelarInscricao.php?id=<?php echo $evento['id']; ?>"
+           onclick="return confirm('Deseja cancelar a inscrição?')">
+            Cancelar inscrição
+        </a>
 
     <?php elseif ($total < $evento['max_participantes']): ?>
-        <a class="btn" href="../usuario/inscrever.php?id=<?php echo $evento['id']; ?>">
+        <a class="btn btn-primary" href="../usuario/inscrever.php?id=<?php echo $evento['id']; ?>">
             Inscrever
         </a>
 
     <?php else: ?>
-        <span style="color:red;">Lotado</span>
+        <span class="status status-full">Lotado</span>
     <?php endif; ?>
 </div>
 
 <?php endforeach; ?>
 
+</div>
 </div>

@@ -2,7 +2,6 @@
 session_start();
 
 require_once "C:/Turma2/xampp/htdocs/gerenciamento-eventos/db/database.php";
-
 ?>
 
 <!DOCTYPE html>
@@ -10,24 +9,30 @@ require_once "C:/Turma2/xampp/htdocs/gerenciamento-eventos/db/database.php";
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+
+    <link rel="stylesheet" href="css/loginECadastro.css">
 </head>
-<body>
+<body class="login-body">
 
-<h2>Login</h2>
+<div class="login-wrapper">
 
+    <h2 class="login-title">Login</h2>
 
-<form method="POST">
+    <form method="POST" class="login-form">
 
-    <input type="email" name="email" placeholder="Email" required><br><br>
+        <input class="input" type="email" name="email" placeholder="Email" required><br><br>
 
-    <input type="password" name="senha" placeholder="Senha" required><br><br>
+        <input class="input" type="password" name="senha" placeholder="Senha" required><br><br>
 
-    <button type="submit">Entrar</button>
+        <button class="btn btn-primary" type="submit">Entrar</button>
 
-</form>
+    </form>
 
-<p>Não tem conta? <a href="cadastro.php">Cadastrar</a></p>
+    <p class="login-link">
+        Não tem conta? <a href="cadastro.php">Cadastrar</a>
+    </p>
 
+</div>
 
 </body>
 </html>
@@ -35,7 +40,6 @@ require_once "C:/Turma2/xampp/htdocs/gerenciamento-eventos/db/database.php";
 <?php
 
 require_once "C:/Turma2/xampp/htdocs/gerenciamento-eventos/controller/ParticipanteController.php";
-
 
 $participanteController = new ParticipanteController($pdo);
 
@@ -45,9 +49,5 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $senha = $_POST['senha'];
 
     $participanteController->login($email, $senha);
-    
 }
-
-
-
 ?>

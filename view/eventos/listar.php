@@ -1,5 +1,5 @@
 <?php
-echo "<section id='eventos'>";
+echo "<section>";
 
 echo "<h1>Gerenciamento de Eventos</h1>";
 
@@ -13,7 +13,7 @@ echo "</div>";
 }
 
 echo "<tr><td><a href='../view/eventos/cadastro.php'>Cadastrar</a></td></tr>";
-echo "<table border='1' cellpadding='5' cellspacing='0'>";
+echo "<table border='1' cellpadding='5' cellspacing='0' class='tabela'>";
 echo "<thead>
         <tr>
             <th>ID</th>
@@ -39,8 +39,8 @@ foreach($eventos as $evento){
     echo "<td>{$evento['local']}</td>";
     echo "<td>{$evento['max_participantes']}</td>";
     echo "<td>
-            <a href='../view/eventos/editar.php?id={$id}' class='btn-editar'>Editar</a> |
-            <a href='../view/eventos/deletar.php?id={$id}' class='btn-deletar' 
+            <a href='../view/eventos/editar.php?id={$id}' class='btn btn-editar'>Editar</a> <br><br><br>
+            <a href='../view/eventos/deletar.php?id={$id}' class='btn btn-deletar' 
                onclick=\"return confirm('Tem certeza que deseja excluir este evento?')\">Deletar</a>
           </td>";
     echo "</tr>";

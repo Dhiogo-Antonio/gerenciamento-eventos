@@ -1,3 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Dashboard</h1>
+        <a href="../public/index.php">Página inicial</a>
+    </header>
+    
+</body>
+</html>
+
 <?php
 session_start();
 require_once "C:/Turma2/xampp/htdocs/gerenciamento-eventos/db/database.php";
@@ -17,6 +34,8 @@ $participantes = $_SESSION['participante'];
 $participanteController = new ParticipanteController($pdo);
 $eventoController = new EventosController($pdo);
 $inscricoesController = new InscricoesController($pdo);
+
+
 
 
 $participantes = $participanteController->listar();
