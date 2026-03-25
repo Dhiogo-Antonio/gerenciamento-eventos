@@ -11,9 +11,7 @@ if (!isset($_SESSION['participante'])) {
 $participante = $_SESSION['participante'];
 $evento_id = $_GET['id'];
 
-$stmt = $pdo->prepare("DELETE FROM inscricoes 
-                       WHERE evento_id = ? 
-                       AND participante_id = ?");
+$stmt = $pdo->prepare("DELETE FROM inscricoes  WHERE evento_id = ? AND participante_id = ?");
 $stmt->execute([$evento_id, $participante['id']]);
 
 header("Location: ../public/index.php");
