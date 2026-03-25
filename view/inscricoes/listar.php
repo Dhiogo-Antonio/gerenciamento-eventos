@@ -1,11 +1,11 @@
 <?php
 echo "<section>";
 
-echo "<h1>Inscricoes</h1>";
+echo "<h1>Inscrições</h1>";
 
 if(empty($inscricoes)){
     echo "<div class='links'>";
-    echo "<p>Nenhuma inscricao encontrada!</p>";
+    echo "<p>Nenhuma inscrição encontrada!</p>";
     
 echo "</div>";
     return;

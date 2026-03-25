@@ -20,15 +20,18 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 <div class="top-actions">
-    <h2 class="title">Olá, <?php echo $participante['nome']; ?></h2>
+    <h2 class="title">Olá, <span style="color: #0352c2;"><?php echo $participante['nome']; ?></span></h2>
+
+    <div class="actions">
     <?php if ($participante['tipo'] == 'admin'): ?>
         <a class="btn btn-success" href="../admin/index.php">Admin</a>
     <?php endif; ?>
 
     <a class="btn btn-danger" href="logout.php">Sair</a>
+    </div>
 </div>
 
-<h3 class="subtitle">Eventos disponíveis</h3>
+<h3 class="subtitle">Eventos</h3>
 
 <div class="cards">
 
