@@ -1,6 +1,6 @@
 .login-body {
     height: 100vh;
-    background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    background: linear-gradient(135deg, #babbbe, #eceefc);
     color: #1e293b;
     display: flex;
     justify-content: center;
@@ -32,6 +32,7 @@
 
 
 .login-title {
+    color: #4f46e5;
     font-size: 24px;
     margin-bottom: 20px;
 }
@@ -39,6 +40,7 @@
 
 .login-form {
     margin-bottom: 10px;
+    margin-right: 15px;
 }
 
 
@@ -73,23 +75,24 @@
     text-decoration: underline;
 }
 
-/* ESPAÇAMENTO ENTRE INPUTS NO CADASTRO */
+
 .login-form .input {
     margin-bottom: 12px;
+    margin-right: 20px;
 }
 
-/* AJUSTE BOTÃO */
+
 .login-form .btn {
     margin-top: 10px;
 }
 
-/* TÍTULO DIFERENTE (opcional leve variação) */
+
 .login-title {
     font-weight: 600;
     letter-spacing: 0.5px;
 }
 
-/* FUNDO (melhorado) */
+
 .auth-body {
     height: 100vh;
     background: radial-gradient(circle at top, #6366f1, #4f46e5, #312e81);
@@ -98,7 +101,7 @@
     justify-content: center;
 }
 
-/* CONTAINER */
+
 .auth-container {
     width: 360px;
     padding: 35px 30px;
@@ -110,7 +113,7 @@
     animation: fadeUp 0.5s ease;
 }
 
-/* ANIMAÇÃO */
+
 @keyframes fadeUp {
     from {
         opacity: 0;
@@ -122,20 +125,21 @@
     }
 }
 
-/* TÍTULO */
+
 .auth-title {
     font-size: 24px;
     margin-bottom: 20px;
     color: #1e293b;
 }
 
-/* FORM */
+
 .auth-form {
     display: flex;
     flex-direction: column;
+    margin-right: 20px;
 }
 
-/* INPUTS */
+
 .input {
     padding: 12px;
     margin-bottom: 12px;
@@ -151,7 +155,7 @@
     box-shadow: 0 0 0 3px rgba(79,70,229,0.2);
 }
 
-/* BOTÃO */
+
 .btn-primary {
     padding: 12px;
     border-radius: 10px;
@@ -168,7 +172,7 @@
     box-shadow: 0 10px 20px rgba(79,70,229,0.3);
 }
 
-/* LINK */
+
 .auth-link {
     margin-top: 15px;
     font-size: 14px;
