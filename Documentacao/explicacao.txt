@@ -1,0 +1,101 @@
+Estrutura MVC Utilizada
+
+
+Model
+
+Responsável pela comunicação com o banco de dados.
+Contém as regras de acesso aos dados (SELECT, INSERT, UPDATE, DELETE).
+
+Exemplo no projeto:
+
+EventosModel.php
+ParticipanteModel.php
+InscricoesModel.php
+
+Responsável pela interface com o usuário (telas).
+Exibe dados e recebe entradas (formulários).
+
+Exemplo no projeto:
+
+index.php
+login.php
+listar.php
+cadastro.php
+
+-------------------------------------------------------------------------
+
+Controller
+
+Responsável por controlar o fluxo da aplicação.
+Recebe dados da View, processa e chama o Model.
+
+Exemplo no projeto:
+
+EventosController.php
+ParticipanteController.php
+InscricoesController.php
+
+------------------------------------------------------------------------
+ 
+ Principais Classes
+ 
+EventosModel
+
+Responsável por manipular os dados da tabela eventos.
+
+
+cadastrar() → insere evento no banco
+listar() → retorna todos os eventos
+editar() → atualiza evento
+deletar() → remove evento
+
+
+ParticipanteModel
+
+Responsável pela tabela participantes.
+
+Funções:
+cadastrar()
+listar()
+editar()
+deletar()
+
+
+EventosController
+
+Intermedia entre View e Model de eventos.
+
+Funções:
+Recebe dados do formulário
+Chama métodos do model
+Controla redirecionamentos
+
+
+ParticipanteController
+
+Controla as ações relacionadas aos participantes.
+
+
+
+Sistema de Inscrições
+
+Não possui classe própria, um participante pode se inscrever em vários eventos
+e um evento pode ter vários participantes
+
+------------------------------------------------------------------------
+
+Página Inicial
+
+Lista de eventos disponíveis
+Botão “Inscrever”
+Indicação de vagas
+Botão “Cancelar inscrição”
+
+
+------------------------------------------------------------------------
+
+
+Dashboard do Admin
+
+Visualização geral do sistema
+Acesso aos gerenciamentos
