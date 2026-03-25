@@ -17,9 +17,10 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="container">
 
-<h2 class="title">Seja Bem-vindo, <?php echo $participante['nome']; ?></h2>
+
 
 <div class="top-actions">
+    <h2 class="title">Olá, <?php echo $participante['nome']; ?></h2>
     <?php if ($participante['tipo'] == 'admin'): ?>
         <a class="btn btn-success" href="../admin/index.php">Admin</a>
     <?php endif; ?>

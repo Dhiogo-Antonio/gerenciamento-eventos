@@ -10,7 +10,7 @@ if (!isset($_SESSION['participante'])) {
 $participante = $_SESSION['participante'];
 $evento_id = $_GET['id'];
 
-// 1. Já inscrito?
+
 $stmt = $pdo->prepare("SELECT * FROM inscricoes WHERE evento_id = ? AND participante_id = ?");
 $stmt->execute([$evento_id, $participante['id']]);
 
@@ -19,7 +19,6 @@ if ($stmt->rowCount() > 0) {
     exit;
 }
 
-// 2. Verificar vagas
 $stmt = $pdo->prepare("SELECT max_participantes FROM eventos WHERE id = ?");
 $stmt->execute([$evento_id]);
 $evento = $stmt->fetch();
@@ -33,7 +32,7 @@ if ($total >= $evento['max_participantes']) {
     exit;
 }
 
-// 3. Inserir
+
 $stmt = $pdo->prepare("INSERT INTO inscricoes (evento_id, participante_id) VALUES (?, ?)");
 $stmt->execute([$evento_id, $participante['id']]);
 
